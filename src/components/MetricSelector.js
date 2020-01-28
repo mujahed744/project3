@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -49,8 +49,10 @@ const metricInputs = [
 
 export default (props) => {
   const classes = useStyles();
+  const [metric, setMetric] = useState("");
 
   const handleChange = name => event => {
+    setMetric(event.target.value);
     if (name === "activeMetrics" && !props.activeMetrics.includes(event.target.value)) {
       props.setActiveMetrics(prev => [...prev, event.target.value]);
     }
@@ -62,7 +64,7 @@ export default (props) => {
       className={classes.metricHeader__inputSelection}
       select
       label="Select Metric"
-      value={metricInputs}
+      value={metric}
       onChange={handleChange('activeMetrics')}
       SelectProps={{ MenuProps: { className: classes.menu, }, }}
       margin="normal"

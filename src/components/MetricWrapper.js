@@ -46,7 +46,7 @@ const client = createClient({
   url: "https://react.eogresources.com/graphql"
 });
 
-const time = new Date().valueOf() - 1800000;
+const time = new Date().valueOf() - 180000;
 const query = `{
   getMultipleMeasurements(input: [
     { metricName: "tubingPressure",
